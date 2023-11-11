@@ -1,0 +1,163 @@
+
+{
+  "menu": [
+    {
+      "url": "/dashboard",
+      "name": "Home",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard-analytics"
+    },
+ 
+    {
+      "menuHeader": "Sections"
+    },
+    {
+      "url": "/projects/all",
+      "name": "Projects",
+      "icon": "menu-icon tf-icons bx bx-menu",
+      "slug": "opp-operations"
+     
+    },
+
+   
+   
+
+    {
+      "name": "Services",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "service",
+      "submenu": [
+        {
+          "url": "/services/add/new",
+          "name": "Add Service",
+          "slug": "add-service-basic"
+         
+        },
+        {
+          "url": "/services/all",
+          "name": "All Services",
+          "slug": "all-service-basic"
+         
+        }
+      ]
+    },
+
+    {
+      "name": "Contacts",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "contact",
+      "submenu": [
+       
+        {
+          "url": "/contacts/all",
+          "name": "All Contacts",
+          "slug": "all-contact-basic"
+         
+        }
+      ]
+    },
+   
+
+    {
+      "name": "Site Sections",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "Leads",
+      "submenu": [
+        {
+          "url": "/about/settings",
+          "name": "About",
+          "slug": "add-leader-basic"
+       
+        },
+        {
+          "url": "/social/settings",
+          "name": "Social Information",
+          "slug": "all-leaders-basic"
+         
+        },
+        {
+          "url": "/slider/settings",
+          "name": "Slider Info",
+          "slug": "all-leaders-basic"
+         
+        },
+        {
+          "url": "/event/settings",
+          "name": "Event Section",
+          "slug": "all-event-basic"
+         
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "event",
+      "submenu": [
+      
+        {
+          "url": "/events/all",
+          "name": "All Event",
+          "slug": "all-event-basic"
+         
+        },
+           {
+          "url": "/event/registrations",
+          "name": "Guests Registrations",
+          "slug": "all-event-basic"
+         
+        },
+        {
+          "url": "/event/registrations/sponsors/exhibitors",
+          "name": "Sponsors - Exhibitors Registrations ",
+          "slug": "all-event-basic"
+         
+        },
+
+        {
+          "url": "/event/registrations/sponsors/exhibitors/types/locations",
+          "name": "Registerar Types",
+          "slug": "Registerar-Type" 
+         
+        } 
+      ]
+    },
+    {
+      
+      "name": "Settings",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "pages-account-settings",
+      "submenu": [
+        {
+          "url": "/pages/account-settings-account",
+          "name": "My Account",
+          "slug": "pages-account-settings-account"
+        },
+        {
+          "url": "site/settings",
+          "name": "Site Settings",
+          "slug": "pages-account-settings-account"
+        }
+        
+      
+      ]
+    },
+    {
+      "url": "/subscriptions/all",
+      "name": "Subscriptions",
+      "icon": "menu-icon tf-icons bx bx-menu",
+      "slug": "opp-operations"
+     
+    },
+    {
+      "url": "/promoters/registrations/all",
+      "name": "Promoters",
+      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "slug": "opp-operations" 
+     
+    }
+   
+
+   
+  ]
+}
