@@ -18,6 +18,7 @@ return [
     "about" => "تعرف علينا",
     "sponsors" => "الرعاة",
     "exhibitors" => "المشاركين",
+    "government_sponser" => "الراعي الحكومي",
     "organizers" => "المنظمين",
     "contactUs" => "تواصل معنا",
     "location" => "الموقع",

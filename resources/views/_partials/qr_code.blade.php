@@ -71,7 +71,15 @@
           <div class="col-lg-10">
           <div class="visible-print text-center">
 			<!-- <a href="{{url('/qr/code/scan/'.json_encode($data))}}">Click Me To Scan QR CODE </a> -->
-         {!!   \QrCode::size(150)->eye('circle')->color(5,122,2)->generate( "Guest EMail : " . $data->email )  !!}
+      <?php
+       $data = [
+        'Event Name' => $data->event->name,
+        'Guest Name' => $data->name,
+        'Guest Phone' => $data->phone
+        // Add more key-value pairs as needed
+    ];
+      ?>
+         {!!   \QrCode::size(150)->eye('circle')->color(5,122,2)->generate(json_encode($data))  !!}
       
 </div>
 <br>

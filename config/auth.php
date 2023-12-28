@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [ 
+            'driver' => 'jwt',
+            'provider' => 'users',
+    ],
     ],
 
     /*
@@ -65,10 +70,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'promoters_registrations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PromotersRegistrations::class,
+        ],
     ],
 
     /*

@@ -85,7 +85,7 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 // tables
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic');
 
-Route::group(['middleware' => 'auth' ] , function(){
+Route::group(['middleware' => 'auth:web' ] , function(){ 
     $controller_path = 'App\Http\Controllers';
 
     Route::get('/dashboard', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
@@ -214,7 +214,10 @@ Route::get('/site/event/IEC', $controller_path . '\ClientController@SiteEventReg
 Route::get('/site/event/IEC/event_token:eventostbomentos2023116202206111115/referral_link', $controller_path . '\ClientController@SiteEventRegistrationWithRefferal')->name('event.registration.referral');
 Route::get('/site/event/IEC/event_token:TGFmdCByZWZmZXJhbCBsaW5rIGZvciByZWd/referral_link', $controller_path . '\ClientController@SiteEventRegistrationWithRefferal2')->name('event.registration.referral2');
 Route::get('/site/event/IEC/event_token:R2hhZGEgcmVmZXJyYWwgbGluawo=/referral_link', $controller_path . '\ClientController@SiteEventRegistrationWithRefferal3')->name('event.registration.referral3');
-  
+Route::get('/site/event/IEC/event_token:R2hhZGEgcmVmZWZ311620220rvciByZWd=/referral_link', $controller_path . '\ClientController@SiteEventRegistrationWithRefferal4')->name('event.registration.referral4');
+
+
+
 Route::post('/site/event/registration/event_token:eventostbomentos2023116202206111115/register', $controller_path . '\ClientController@SiteEventRegistration')->name('event.registration.guestRegister');
 Route::get('/site/event/registration/event_token:eventostbomentos2023116202206111115/register/response/{id}', $controller_path . '\ClientController@SiteEventRegistrationResponse')->name('event.registration.guestRegister.response');
 Route::post('/site/event/registration/event_token:eventostbomentos20231162022061111152023', $controller_path . '\ClientController@SiteEventRegistrationSponExhi')->name('event.registration.spon_exhi');

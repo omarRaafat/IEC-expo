@@ -146,6 +146,10 @@ a:hover{
   .event_timer{
     padding-top: 0px;
   }
+  .custom-size{
+  width: 340px
+}
+
 }
 
 @media screen and (min-width: 767px) and (max-width: 1680px) {
@@ -163,7 +167,9 @@ a:hover{
     padding-top: 20px;
   }
 
-
+  .custom-size{
+  width: 430px
+}
 }
 
 .event_file{
@@ -179,6 +185,9 @@ a:hover{
     line-height: 0;
     transition: 0.5s;
 }
+
+
+
 }
 
 @media (max-width: 840px) {
@@ -616,126 +625,41 @@ snaptr('track', 'PAGE_VIEW');
             <div class="row gy-4 justify-content-center">
               
            
-              <!-- <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/1.png')}}" class="w-100 h-auto bg-white">
+               <div class="col-12 text-center">
+                <div class="">
+                  <a class="d-block  tet-decoration-none">
+                    <img src="{{asset('assets/assets/img/team/17.jpeg')}}" class="bg-white custom-size" >
                   </a>
                   </div>
                 </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/2.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/3.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/4.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/5.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/6.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/7.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/8.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/9.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/10.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/11.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/12.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/13.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-3">
-                <div class="bg-white">
-                  <a class="d-block bg-white tet-decoration-none">
-                    <img src="{{asset('assets/assets/img/team/14.png')}}" class="w-100 h-auto bg-white">
-                  </a>
-                  </div>
-                </div> -->
-          
-          
-        
-          
-        
-                
                  
                </div>
                <br>
+
+
+               <h2 id="sponsor" class="mb-5 pb-2 text-center position-relative fw-bold">
+                <span class="tracking-wide">{{__('event.government_sponser')}}</span> 
+                <span class="heading-line-1 position-absolute bottom-0 start-50 translate-middle-x border-bottom border-primary" style="border-color: #057a02 !important;
+          height: 1px;
+          width: 140px;"></span>
+                 <span class="heading-line-2 position-absolute start-50 translate-middle-x border-bottom border-primary" style="height: 1px;
+          width: 42px;
+          bottom: -4px;
+          border-color: #057a02 !important;"></span></h2>
+                  <div class="row gy-4 justify-content-center">
+                    
+                 
+                     <div class="col-12 text-center">
+                      <div class="">
+                        <a class="d-block  tet-decoration-none">
+                          <img src="{{asset('assets/assets/img/clients/24.jpeg')}}" class="bg-white custom-size" >
+                        </a>
+                        </div>
+                      </div>
+                       
+                     </div>
+                     <br>
+
     
         <h2 id="sponsor" class="mb-5 pb-2 text-center position-relative fw-bold">
           <span class="tracking-wide">{{__('event.sponsors')}}</span> 

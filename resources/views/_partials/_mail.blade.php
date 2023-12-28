@@ -53,6 +53,16 @@
                                             <p>Registered Guest Name : {{$data->name}}</p>
                                             <p>Registered Guest Email : {{$data->email}}</p>
 
+
+                                            <?php
+       $data = [
+        'Event Name' => $data->event->name,
+        'Guest Name' => $data->name,
+        'Guest Phone' => $data->phone
+        // Add more key-value pairs as needed
+    ];
+      ?>
+         {!!   \QrCode::size(150)->eye('circle')->color(5,122,2)->generate(json_encode($data))  !!}
                                             <span
                                             style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">

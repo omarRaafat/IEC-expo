@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Role;
 
-class User extends Authenticatable
+class User extends Authenticatable  implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -47,5 +48,15 @@ class User extends Authenticatable
 
     public function user_has_role(){
         return $this->belongsTo('App\Models\Role' , 'role');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

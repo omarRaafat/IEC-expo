@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// Public accessible API
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Authenticated only API
+// We use auth api here as a middleware so only authenticated user who can access the endpoint
+// We use group so we can apply middleware auth api to all the routes within the group
+Route::middleware('auth:api')->group(function() {
+    Route::post('/guest/attend', [UserController::class, 'attend']); 
+    Route::post('/logout', [AuthController::class, 'logout']); 
+
 });

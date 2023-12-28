@@ -18,6 +18,7 @@ return [
     "about" => "About Us",
     "sponsors" => "Sponsors",
     "exhibitors" => "Exhibitors",
+    "government_sponser" => "Government Sponser",
     "organizers" => "Organizers",
     "contactUs" => "Contact Us",
     "location" => "Location",

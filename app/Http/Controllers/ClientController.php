@@ -124,6 +124,18 @@ class ClientController extends Controller
      
     }
 
+    
+    public function SiteEventRegistrationWithRefferal4(Request $request ,  $referral_code = "Zakaria"){
+        if($request->isMethod('POST')){
+            $this->SiteEventRegistrationSponExhi();
+        }else{
+            $event = Event::latest()->first();
+            return view('event_registration_page')->with(['event' => $event , 'event_form' => EventForm::where('include' , 1)->get(),'settings' => Setting::first() , 'sponsors' => Sponsor::where('event_id' , $event->id)->get() , 'exhibitors' => Exhibitor::where('event_id' , $event->id)->get() , "regtypes" => RegType::all() , "referral_code" => $referral_code  ]);
+    
+        }
+     
+    }
+
     public function SiteEventRegistrationSponExhi(Request $request){
             $data =  $request->all();
             $EventRegistration = EventRegistrationSponExhi::create($data);
