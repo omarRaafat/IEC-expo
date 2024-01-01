@@ -142,7 +142,7 @@
               <div class="avatar flex-shrink-0">
                 <img src="{{asset('assets/img/icons/unicons/paypal.png')}}" alt="Credit Card" class="rounded">
               </div>
-              <div class="dropdown">
+              {{-- <div class="dropdown">
                 <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
@@ -150,11 +150,11 @@
                   <a class="dropdown-item" href="javascript:void(0);">View More</a>
                   <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <span class="d-block mb-1">Events</span>
-            <h3 class="card-title text-nowrap mb-2">2,456</h3>
-            <small class="text-danger fw-semibold"><i class='bx bx-down-arrow-alt'></i> -14.82%</small>
+            <h3 class="card-title text-nowrap mb-2">6</h3>
+            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> 14.82%</small>
           </div>
         </div>
       </div>
@@ -165,7 +165,7 @@
               <div class="avatar flex-shrink-0">
                 <img src="{{asset('assets/img/icons/unicons/cc-primary.png')}}" alt="Credit Card" class="rounded">
               </div>
-              <div class="dropdown">
+              {{-- <div class="dropdown">
                 <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
@@ -173,11 +173,11 @@
                   <a class="dropdown-item" href="javascript:void(0);">View More</a>
                   <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <span class="fw-semibold d-block mb-1">Services</span>
-            <h3 class="card-title mb-2">14</h3>
-            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> +28.14%</small>
+            <h3 class="card-title mb-2">15</h3>
+            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> +15.14%</small>
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@
               <div class="avatar flex-shrink-0">
                 <img src="{{asset('assets/img/icons/unicons/cc-primary.png')}}" alt="Credit Card" class="rounded">
               </div>
-              <div class="dropdown">
+              {{-- <div class="dropdown">
                 <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
@@ -197,11 +197,11 @@
                   <a class="dropdown-item" href="javascript:void(0);">View More</a>
                   <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <span class="fw-semibold d-block mb-1">Clients</span>
-            <h3 class="card-title mb-2">14,857</h3>
-            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> +28.14%</small>
+            <h3 class="card-title mb-2">1,202</h3>
+            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> +95.14%</small>
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@
               <div class="avatar flex-shrink-0">
                 <img src="{{asset('assets/img/icons/unicons/cc-primary.png')}}" alt="Credit Card" class="rounded">
               </div>
-              <div class="dropdown">
+              {{-- <div class="dropdown">
                 <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
                 </button>
@@ -221,11 +221,11 @@
                   <a class="dropdown-item" href="javascript:void(0);">View More</a>
                   <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <span class="fw-semibold d-block mb-1">Projects</span>
-            <h3 class="card-title mb-2">857</h3>
-            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> +28.14%</small>
+            <h3 class="card-title mb-2">12</h3>
+            <small class="text-success fw-semibold"><i class='bx bx-up-arrow-alt'></i> +12.14%</small>
           </div>
         </div>
       </div>

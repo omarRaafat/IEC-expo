@@ -83,19 +83,19 @@ class AuthController extends Controller
             "password" => "YWRtaW5AMjAzMAo="
         ];
         $token = auth('api')->attempt($credentials);
-       
+        
 
 
         // if token successfully generated then display success response
         // if attempt failed then "unauthenticated" will be returned automatically
         if ($token)
         {
-          
+            
             return response()->json([
                 'meta' => [
                     'code' => 200,
                     'status' => 'success',
-                    'message' => 'Data fetched successfully.',
+                    'message' => 'Logged In successfully.',
                 ],
                 'data' => [
                     'user' => $user->makeHidden(['qualificatoin','birthdate','experience','id','other_langiages' 
@@ -105,7 +105,7 @@ class AuthController extends Controller
                     'access_token' => [
                         'token' => $token,
                         'type' => 'Bearer',
-                        'expires_in_seconds' => auth('api')->factory()->getTTL() * 15,
+                        'expires_in_seconds' => auth('api')->factory()->getTTL() * 60,
                     ],
                 ],
             ]);
