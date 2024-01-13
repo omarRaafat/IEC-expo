@@ -159,6 +159,8 @@ Route::post('/event/registrations/sponsors/exhibitors/type/update/{registrar_typ
  
 
 Route::get('/event/registrations', $controller_path . '\dashboard\Crm@EventRegistrations');
+Route::get('/event/attendances', $controller_path . '\dashboard\Crm@EventAttendance');
+
 Route::get('/event/registration/delete/{id}', $controller_path . '\dashboard\Crm@EventRegistrationsDelete');
 
 
@@ -198,6 +200,9 @@ Route::get('/subscriptions/all' , $controller_path. '\dashboard\Crm@Subscription
 
 Route::get('/promoter/registration/{promoter}', $controller_path . '\dashboard\Crm@showPromoter')->name('promoter.register');
 Route::get('/promoters/registrations/all', $controller_path . '\dashboard\Crm@showPromoters')->name('promoter.register');
+Route::get('/promoters/app/registrations/all', $controller_path . '\dashboard\Crm@showAppPromoters')->name('promoter2.register');
+Route::get('/promoter/app/registration/activate/{promoter}', $controller_path . '\dashboard\Crm@promoterActivate')->name('promoter.activate');
+
 Route::post('/promoters/registrations/filter', $controller_path . '\dashboard\Crm@filterPromoters')->name('promoter.filter');
 
 

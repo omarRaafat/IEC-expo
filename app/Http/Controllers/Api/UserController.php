@@ -34,19 +34,20 @@ class UserController extends Controller
         $user = EventRegistration::where('phone', $request->get('guest_phone'))->first();
         if(!$user){
             return response()->json([
-                'meta' => [
+                
                     'code' => 404,
                     'status' => 'failed',
                     'message' => 'No Guest with this number.',
-                ]
+                
             ],404);
         }
+        $user->update(['is_attend' => 1]);
         return response()->json([
-            'meta' => [
+          
                 'code' => 200,
                 'status' => 'success',
                 'message' => 'Guest Added to Attendence List successfully!',
-            ],
+            
            
         ]);
 }

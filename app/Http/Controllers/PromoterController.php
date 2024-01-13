@@ -36,8 +36,14 @@ class PromoterController extends Controller
           
              $country = Country::find($request->country);
              $all_data['country'] = $country->name;
-             PromotersRegistrations::create($all_data);
+             if(PromotersRegistrations::where('phone' , $all_data['phone'])->first())
+             return redirect()->back()->with('error' , __('site.promoter_phone_error_message'));
+            elseif(PromotersRegistrations::where('email' , $all_data['email'])->first())
+            return redirect()->back()->with('error' , __('site.promoter_email_error_message'));
+             else{
+                PromotersRegistrations::create($all_data);
                return redirect()->back()->with('message' , __('site.success_message'));
+             }
             
             }else{
               return view('promoters_registration_page')->with(['settings' => Setting::first() , 'countries' => Country::all()]);

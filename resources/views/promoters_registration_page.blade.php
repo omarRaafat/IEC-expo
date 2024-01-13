@@ -35,6 +35,12 @@ form {
     {{session()->get('message')}}
   </div>
 @endif
+
+@if(session()->has('error'))
+<div class="alert alert-danger">
+    {{session()->get('error')}}
+  </div>
+@endif
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">

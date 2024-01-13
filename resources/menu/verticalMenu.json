@@ -24,7 +24,7 @@
 
     {
       "name": "Services",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-menu",
       "slug": "service",
       "submenu": [
         {
@@ -44,7 +44,7 @@
 
     {
       "name": "Contacts",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-menu",
       "slug": "contact",
       "submenu": [
        
@@ -60,7 +60,7 @@
 
     {
       "name": "Site Sections",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-menu",
       "slug": "Leads",
       "submenu": [
         {
@@ -91,13 +91,13 @@
     },
     {
       "name": "Events",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-menu",
       "slug": "event",
       "submenu": [
       
         {
           "url": "/events/all",
-          "name": "All Event",
+          "name": "IEC",
           "slug": "all-event-basic"
          
         },
@@ -119,13 +119,21 @@
           "name": "Registerar Types",
           "slug": "Registerar-Type" 
          
+        },
+        {
+          "url": "/event/attendances",
+          "name": "Event Attendances",
+          "slug": "event-attendances" 
+         
         } 
+
+        
       ]
     },
     {
       
       "name": "Settings",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-menu",
       "slug": "pages-account-settings",
       "submenu": [
         {
@@ -152,7 +160,15 @@
     {
       "url": "/promoters/registrations/all",
       "name": "Promoters",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-menu",
+      "slug": "opp-operations" 
+     
+    },
+
+    {
+      "url": "/promoters/app/registrations/all",
+      "name": "App Promoters",
+      "icon": "menu-icon tf-icons bx bx bx-mobile",
       "slug": "opp-operations" 
      
     }

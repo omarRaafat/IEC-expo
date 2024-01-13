@@ -96,6 +96,8 @@ return [
      "male" => "Male",
      "female" => "Female",
      "promoter_register" => "Promoter Registration",
+     "promoter_phone_error_message" => "phone number Already Exists in Our Records",
+     "promoter_email_error_message" => "Email Address Already Exists in Our Records",
      "gender" => "Gender",
      "working_time" => "Working Time",
      "birthdate" => "Birthdate",

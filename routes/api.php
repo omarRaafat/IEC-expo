@@ -23,7 +23,8 @@ Route::post('/login', [AuthController::class, 'login']);
 // We use auth api here as a middleware so only authenticated user who can access the endpoint
 // We use group so we can apply middleware auth api to all the routes within the group
 Route::middleware('auth:api')->group(function() {
-    Route::post('/guest/attend', [UserController::class, 'attend']); 
+    Route::post('/guest/attend', [UserController::class, 'attend']);
+     
     Route::post('/logout', [AuthController::class, 'logout']); 
 
 });

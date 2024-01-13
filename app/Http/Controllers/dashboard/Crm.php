@@ -352,6 +352,12 @@ class Crm extends Controller
    return view('content.tables.tables-basic-events-registrations')->with(['registrations' => $registrations]);
  }
 
+ public function EventAttendance(){
+  $registrations = EventRegistration::where("is_attend" , 1)->latest()->get();
+  
+ return view('content.tables.tables-basic-events-attendance')->with(['registrations' => $registrations]);
+}
+
  public function EventRegistrationsDelete($id){
   $registration = EventRegistration::find($id)->delete();
   return redirect()->back();
@@ -828,6 +834,20 @@ class Crm extends Controller
       $promoters_registrations =  PromotersRegistrations::latest()->get();
       // return $promoters_registrations;
          return view ('content.tables.tables-basic-promoters')->with('promoters' ,$promoters_registrations );
+    }
+
+    public function showAppPromoters(){
+      $promoters_registrations =  PromotersRegistrations::where('type' , 'Mobile Device')->latest()->get();
+      // return $promoters_registrations;
+         return view ('content.tables.tables-basic-promoters2')->with('promoters' ,$promoters_registrations );
+    }
+
+    public function promoterActivate($promoter){
+      $promoterDetails = PromotersRegistrations::findOrFail($promoter);
+      // return $promoterDetails -> status;
+      $promoterDetails -> status== "Activated"?$promoterDetails -> status = 0:$promoterDetails -> status = 1;
+      $promoterDetails->save();
+      return redirect()->back();
     }
 
     public function showPromoter(int $promoter) {

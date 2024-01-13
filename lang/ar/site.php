@@ -96,6 +96,8 @@ return [
      "male" => "ذكر",
      "female" => "أنثى",
        "promoter_register" => "تسجيل منظم",
+       "promoter_phone_error_message" => "رقم الجوال مسجل لدينا من قبل",
+       "promoter_email_error_message" => "البريد الإلكترونى مسجل لدينا من قبل",
        "gender" => "الجنس",
        "working_time" => "الدوام",
        "birthdate" => "تاريخ الميلاد",

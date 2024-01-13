@@ -26,35 +26,50 @@ class AuthController extends Controller
         // set email field so it only accept the valid email format
 
         $this->validate($request, [
-            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
             'password' => 'required|string|min:6|max:255',
         ]);
 
         // if the request valid, create user
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        $data['type'] = "Mobile Device";
+        if(PromotersRegistrations::where('email' , $data['email'])->first()){
+            return response()->json([
+               
+                
+                'status' => 'failed',
+                'message' => 'Email Address Already Exists.',
+            
+        ],404);
+        }
+        if(PromotersRegistrations::where('phone' , $data['phone'])->first()){
+            return response()->json([
+               
+                
+                'status' => 'failed',
+                'message' => 'Phone Already Exists.',
+            
+        ],404);
+        }
+        $promoter = PromotersRegistrations::create($data);
 
-        $user = $this->user::create([
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-        ]);
-
-        // login the user immediately and generate the token
-        $token = auth('api')->login($user);
+        // // login the user immediately and generate the token
+        // $token = auth('api')->login($user);
 
         // return the response as json 
         return response()->json([
-            'meta' => [
+            
                 'code' => 200,
                 'status' => 'success',
-                'message' => 'User created successfully!',
-            ],
-            'data' => [
-                'user' => $user,
-                'access_token' => [
-                    'token' => $token,
-                    'type' => 'Bearer',
-                    'expires_in' => auth('api')->factory()->getTTL() * 60,    // get token expires in seconds
-                ],
-            ],
+                'message' => 'Account Registered successfully!'
+                // 'promoter' => $promoter
+                  
+            
+            
         ]);
     }
 
@@ -62,13 +77,13 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'phone' => 'required|string',
-            // 'password' => 'required|string',
+            'password' => 'required|string',
         ]);
 
         
      
-        $user = PromotersRegistrations::where('phone', $request->get('phone'))->first();
-        if(!$user){
+        $promoter = PromotersRegistrations::where('phone', $request->get('phone'))->where('type' , 'Mobile Device')->first();
+        if(!$promoter){
             return response()->json([
                 'meta' => [
                     'code' => 404,
@@ -76,6 +91,26 @@ class AuthController extends Controller
                     'message' => 'No Promoter with this number.',
                 ]
             ],404);
+        }
+
+        if(!Hash::check($request->get('password'), $promoter->password)){
+            return response()->json([
+               
+                    'code' => 404,
+                    'status' => 'failed',
+                    'message' => 'Wrong Password.',
+                
+            ],404);
+        }
+
+        if($promoter->status == "Not Active"){
+            return response()->json([
+               
+                    'code' => 400,
+                    'status' => 'failed',
+                    'message' => 'Account is not Active.',
+                
+            ],400);
         }
        
         $credentials = [
@@ -92,22 +127,20 @@ class AuthController extends Controller
         {
             
             return response()->json([
-                'meta' => [
+             
                     'code' => 200,
                     'status' => 'success',
                     'message' => 'Logged In successfully.',
-                ],
-                'data' => [
-                    'user' => $user->makeHidden(['qualificatoin','birthdate','experience','id','other_langiages' 
+                    'user' => $promoter->makeHidden(['qualificatoin','birthdate','experience','id','other_langiages' 
                     , 'is_available' , 'emergency_contact' , 'created_at' 
                     , 'english_level' , 'attendance_time' 
-                    , 'updated_at' , 'gender']),
+                    , 'updated_at' , 'gender','password' , 'nationality' , 'country' , 'city']),
                     'access_token' => [
                         'token' => $token,
                         'type' => 'Bearer',
                         'expires_in_seconds' => auth('api')->factory()->getTTL() * 60,
                     ],
-                ],
+              
             ]);
         }
       
