@@ -30,7 +30,7 @@ class FireMailNotification extends Mailable
     {
         $address = 'no-reply@umbrella.sa';
         $name = 'EXPO no-reply';
-        $subject = 'IEC Expo';
+        $subject = 'IEC Expo - '.$this->data->name;
         return $this->view('_partials._mail')
             ->from($address, $name)
             ->subject($subject)

@@ -24,9 +24,9 @@
 
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Events /</span> Guests Attendance ({{$registrations->count()}})
-</h4>
-
+  <span class="text-muted fw-light">Events /</span> Guests Attendance </h4>
+<h3>Total Attendees ({{$registrations->count()}})
+</h3>
 <!-- Basic Bootstrap Table -->
 <div class="card" >
 
@@ -40,7 +40,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Event</th>
-          {{-- <th>Actions</th> --}}
+          <th>Number of Visits</th>
         </tr>
       </thead>
       <tbody class="table-border-bottom-0">
@@ -52,6 +52,7 @@
           <td>{{$registration->email}}</td>
           <td>{{$registration->phone}}</td>
           <td>{{$registration->event->name}}</td>
+          <td>{{$registration->attend_counter}}</td>
         
           {{-- <td>
             <div class="dropdown">

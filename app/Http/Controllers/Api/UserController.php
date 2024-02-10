@@ -41,7 +41,9 @@ class UserController extends Controller
                 
             ],404);
         }
-        $user->update(['is_attend' => 1]);
+        $user->is_attend = 1;
+        $user->attend_counter++;
+        $user->save();
         return response()->json([
           
                 'code' => 200,

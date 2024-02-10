@@ -22,7 +22,7 @@
 <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Events /</span> All Events sponsors & exhibitors Registrations
+  <span class="text-muted fw-light">Events /</span> All Events sponsors & exhibitors Registrations ({{$registrations2->count()}})
 </h4>
 
 <!-- Basic Bootstrap Table -->

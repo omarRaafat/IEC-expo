@@ -478,6 +478,8 @@ snaptr('track', 'PAGE_VIEW');
        <h4 class="event_desc fw-bold" style="color:white">{{$event->description}}</h4>
                <p class="fw-bold mb-0"><span class=""><span style="color:#ffffff">{{__('event.location')}} :: </span>&nbsp;</span><span>{{$event->location}} | {{$event->city}}</span></p>
                <p class="fw-bold"><span class=""><span style="color:#ffffff">{{__('event.date')}} :: </span>&nbsp;</span><span>{{date('d-m-Y' , strtotime($event->start_date))}} |  {{date('d-m-Y' , strtotime($event->end_date))}}</span></p>
+               <p class="fw-bold"><span class=""><span style="color:#ffffff">{{__('event.time')}} :: </span>&nbsp;</span><span> 4 {{__('event.time_zone')}} {{__('event.time_to')}} 11 {{__('event.time_zone')}}</span></p>
+
                <div class="d-flex justify-content-center event_timer" >
                <div class="me-2 mb-2 rounded overflow-hidden bg-black text-white">
                             <span class="expo-days display-6 fw-bold px-2 py-2 text-center d-block" style="background-color:#057a02" id="day">00</span>
@@ -660,7 +662,7 @@ snaptr('track', 'PAGE_VIEW');
 
 
                <h2 id="sponsor" class="mb-5 pb-2 text-center position-relative fw-bold">
-                <span class="tracking-wide">{{__('event.government_sponser')}}</span> 
+                <span class="tracking-wide">{{__('event.business_sponser')}}</span> 
                 <span class="heading-line-1 position-absolute bottom-0 start-50 translate-middle-x border-bottom border-primary" style="border-color: #057a02 !important;
           height: 1px;
           width: 140px;"></span>
@@ -681,6 +683,30 @@ snaptr('track', 'PAGE_VIEW');
                        
                      </div>
                      <br>
+
+
+                     <h2 id="sponsor" class="mb-5 pb-2 text-center position-relative fw-bold">
+                      <span class="tracking-wide">{{__('event.marketing_sponser')}}</span> 
+                      <span class="heading-line-1 position-absolute bottom-0 start-50 translate-middle-x border-bottom border-primary" style="border-color: #057a02 !important;
+                height: 1px;
+                width: 140px;"></span>
+                       <span class="heading-line-2 position-absolute start-50 translate-middle-x border-bottom border-primary" style="height: 1px;
+                width: 42px;
+                bottom: -4px;
+                border-color: #057a02 !important;"></span></h2>
+                        <div class="row gy-4 justify-content-center">
+                          
+                       
+                           <div class="col-12 text-center">
+                            <div class="">
+                              <a class="d-block  tet-decoration-none">
+                                <img src="{{asset('assets/assets/img/clients/25.jpeg')}}" class="bg-white custom-size" >
+                              </a>
+                              </div>
+                            </div>
+                             
+                           </div>
+                           <br>
 
     
         <h2 id="sponsor" class="mb-5 pb-2 text-center position-relative fw-bold">

@@ -11,7 +11,7 @@ class EventRegistration extends Model
     use HasFactory;
 
     protected $table = "event_registration";
-    protected $fillable = ["name","email","phone" , "event_id" , "is_attend"];
+    protected $fillable = ["name","email","phone" , "event_id" , "is_attend" , "attend_counter"];
   
     public function event()
     {

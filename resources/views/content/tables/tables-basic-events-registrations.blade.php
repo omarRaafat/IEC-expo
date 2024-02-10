@@ -24,7 +24,7 @@
 
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">Events /</span> All Events Guest Registrations
+  <span class="text-muted fw-light">Events /</span> All Events Guest Registrations ({{$registrations->count()}})
 </h4>
 
 <!-- Basic Bootstrap Table -->
