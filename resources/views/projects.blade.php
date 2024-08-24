@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<title>Custom Bootstrap 4 card</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500&amp;subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <style>
         .img-fluid{
 
@@ -55,11 +60,62 @@
         .text {
 
             color: white;
-            font-size: 22px;
             padding: 16px 32px;
         }
+
+        .card-custom {
+  overflow: hidden;
+  min-height: 450px;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+}
+
+.card-custom-img {
+  height: 200px;
+  min-height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-color: inherit;
+}
+
+/* First border-left-width setting is a fallback */
+.card-custom-img::after {
+  position: absolute;
+  content: '';
+  top: 161px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-top-width: 40px;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 545px;
+  border-left-width: calc(575px - 5vw);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: inherit;
+}
+
+.card-custom-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  position: absolute;
+  top: 100px;
+  left: 1.25rem;
+  width: 100px;
+  height: 100px;
+}
+
+.custom_button{
+    background: #057a02;
+     border-color: #057a02;"
+}
+
     </style>
-    <main id="main">
+    
+      <main id="main">
 
         <!-- ======= Breadcrumbs ======= -->
         <section id="breadcrumbs" class="breadcrumbs">
@@ -91,178 +147,47 @@
                   </div>
                 </div> -->
 
-                <div class="row portfolio-container" >
+                <div class="row portfolio-container pt-5 m-auto" >
                     @foreach($projects as $project)
 
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                            <div class="overlay"> </div>
-                            <div class="img-fluid">
-                              <?php $images = json_decode($project->images) ?>
-                                <img src="{{url($images[0])}}" class="img-fluid" alt="">
+                    <div class="col-md-6 col-lg-4 pb-3 portfolio-item filter-app">
 
-                            </div>
-                            <div class=" text-center">
+                        <!-- Add a style="height: XYZpx" to div.card to limit the card height and display scrollbar instead -->
+                        <div class="card card-custom bg-white border-white border-0" style="height: 450px">
+                            <?php $images = json_decode($project->images) 
+                      
 
-                                <div class="middle">
-                                    <h4>
+                            ?>
+                           
+                          <div class="card-custom-img" style="background-image: url('{{ url($images[0]) }}');">
+                          </div>
+                          <div class="card-custom-avatar">
+                            <img class="img-fluid"
+                              src="{{$project->clientLogo?->media_path ??  url('assets/assets/img/Logos/bu_logo_fav.png')}}"
+                              alt="Avatar" />
+                          </div>
+                          <div class="card-body" style="overflow-y: auto">
+                            <h4 class="card-title">
+                                <a href="/project/details/{{$project->id}}" style="color: #057a02" alt="NO CLIENT LOGO"  title="More Details">{{$project->title}}</a>
 
-                                        <a href="/project/details/{{$project->id}}" class="text"  title="More Details">{{$project->title}}</a>
-
-                                    </h4>
-
-                                </div>
-
-                                <!-- <p>App</p> -->
-                                <!-- <a href="assets/assets/img/Projects/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a> -->
-                            </div>
+                            </h4>
+                          
+                            <p class="card-text">{{Str::limit($project->description,100)}}</p>
+                          
+                          </div>
+                          <div class="card-footer" style="background: inherit; border-color: inherit;">
+                            <a href="/project/details/{{$project->id}}" class="btn text custom_button">{{__('site.project_details')}}</a>
+                          
+                          </div>
                         </div>
-
+            
+                  </div>
+            
+             
+                     
                     @endforeach
 
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-web">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/2.jpg')}}" class="img-fluid" alt="">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--            <h4>--}}
-                    {{--              <a href="/project-details/2" class="text"  title="More Details">World Nomad Games</a>--}}
-
-                    {{--              </h4>--}}
-                    {{--</div>--}}
-                    {{--              <!-- <p>Web</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/06-Word-Nomad-Games.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/2" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-app">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/3.jpg')}}" class="img-fluid" alt="">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/3" class="text"  title="More Details">SAP</a>--}}
-
-                    {{--              </h4>--}}
-                    {{--</div>--}}
-                    {{--              <!-- <p>App</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/3" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-card">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/4.jpg')}}" class="img-fluid" alt="">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/4" class="text" title="More Details">SUSE Expert Days </a>--}}
-
-                    {{--              </h4>--}}
-                    {{--              </div>--}}
-                    {{--              <!-- <p>Card</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/4" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-web">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/5.jpg')}}" class="img-fluid" alt="">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/5" class="text" title="More Details">Mada</a>--}}
-
-                    {{--              </h4>--}}
-                    {{--              </div>--}}
-                    {{--              <!-- <p>Web</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/5" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-app">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/6.jpg')}}" class="img-fluid" alt="">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/6" class="text"  title="More Details">Italian Super Cup</a>--}}
-
-                    {{--              </h4>--}}
-                    {{--              </div>--}}
-                    {{--              <!-- <p>App</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/6" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-card">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/7.jpg')}}" class="img-fluid" alt="" style="height: 238px;">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/7" class="text" title="More Details">Rice Bull riding Co</a>--}}
-
-                    {{--              </h4>--}}
-                    {{--              </div>--}}
-                    {{--              <!-- <p>Card</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/7" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-card">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/8.jpg')}}" class="img-fluid" alt="" style="height: 238px;">--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/8" class="text" title="More Details">Camel Club</a>--}}
-
-                    {{--              </h4>--}}
-                    {{--              </div>--}}
-                    {{--              <!-- <p>Card</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/8" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
-                    {{--          <div class="col-lg-4 col-md-6 portfolio-item filter-web">--}}
-                    {{--          <div class="overlay"> </div>--}}
-                    {{--          <div class="img-fluid">--}}
-                    {{--            <img src="{{url('assets/assets/img/Projects/9.jpg')}}" class="img-fluid" alt="" >--}}
-                    {{--            </div>--}}
-                    {{--            <div class=" text-center">--}}
-                    {{--            <div class="middle">--}}
-                    {{--              <h4>--}}
-                    {{--              <a href="/project-details/9" class="text" title="More Details">Hajj Hackathon </a>--}}
-
-                    {{--              </h4>--}}
-                    {{--              </div>--}}
-                    {{--              <!-- <p>Web</p> -->--}}
-                    {{--              <!-- <a href="assets/assets/img/Projects/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a> -->--}}
-                    {{--              <!-- <a href="/project-details/9" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->--}}
-                    {{--            </div>--}}
-                    {{--          </div>--}}
-
+                   
                 </div>
 
             </div>
