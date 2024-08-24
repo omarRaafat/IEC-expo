@@ -2,36 +2,37 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Client;
-use App\Models\Contact;
+use Auth;
+use Hash;
+use Mail;
 use App\Models\Opp;
+use App\Models\Lead;
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Media;
+use App\Models\Client;
+use App\Models\RegNum;
+use App\Models\Slider;
+use App\Models\Contact;
+use App\Models\Project;
+use App\Models\RegType;
+use App\Models\Service;
+use App\Models\Setting;
+use App\Models\Sponsor;
+use App\Models\EventForm;
+use App\Models\Exhibitor;
 use App\Models\OppAssign;
 use App\Models\LeadAssign;
-use Auth;
-use App\Models\User;
-use App\Models\RegNum;
-use App\Models\RegType;
-use App\Models\Sponsor;
-use App\Models\Exhibitor;
-use App\Models\Lead;
-use App\Models\Project;
-use App\Models\Event;
-use App\Models\Service;
-use App\Models\EventForm;
 use App\Models\Notification;
-use App\Models\Setting;
-use App\Models\Slider;
-use Illuminate\Support\Facades\Validator;
-use App\Mail\FireMailNotification;
-use Mail;
-use Hash;
 use App\Models\Subscription;
-use App\Http\Traits\EmailFireTrait;
+use Illuminate\Http\Request;
 use App\Models\EventRegistration;
-use App\Models\EventRegistrationSponExhi;
+use App\Mail\FireMailNotification;
+use App\Http\Traits\EmailFireTrait;
+use App\Http\Controllers\Controller;
 use App\Models\PromotersRegistrations;
+use App\Models\EventRegistrationSponExhi;
+use Illuminate\Support\Facades\Validator;
 
 class Crm extends Controller
 {
@@ -135,8 +136,27 @@ class Crm extends Controller
       $all_data['images'] = json_encode($project_images);
     }
 
+    $project = Project::create($all_data);
 
-      $project = Project::create($all_data);
+    if($request->hasFile('client_logo')){
+      $client_logo = $request->file('client_logo');
+      $client_logo_name =  rand(1,10).'-'.time().$client_logo->getClientOriginalName();
+      $client_logo_path = '/uploads/projects/client_logos/'.$client_logo_name;
+      // get extension
+      $extension = $client_logo->getClientOriginalExtension();
+      // upload image
+      $client_logo->move('uploads/projects/client_logos/' , $client_logo_name);
+      $media = new Media([
+        'media_path' => $client_logo_path,
+        'media_type' => $extension,
+      ]);
+
+      
+      $project->clientLogo()->save($media);
+    }
+
+
+    
      
       return redirect('/projects/all');
     }else{
@@ -175,8 +195,29 @@ class Crm extends Controller
     }
     $all_data['images'] = json_encode($project_images);
   }
-//return $all_data;
        $project->update($all_data);
+
+       if($request->hasFile('client_logo')){
+      
+        $client_logo = $request->file('client_logo');
+        $client_logo_name =  rand(1,10).'-'.time().$client_logo->getClientOriginalName();
+        $client_logo_path = '/uploads/projects/client_logos/'.$client_logo_name;
+        // get extension
+        $extension = $client_logo->getClientOriginalExtension();
+        // upload image
+        $client_logo->move('uploads/projects/client_logos/' , $client_logo_name);
+        $media = new Media([
+          'media_path' => $client_logo_path,
+          'media_type' => $extension,
+        ]);
+  
+        
+        $project->clientLogo()->save($media);
+      }else{
+        return FALSE;
+      }
+  
+  
       
        
       

@@ -34,6 +34,12 @@
         background: white;
         color: black;
     }
+
+    .image-preview {
+        
+            max-height: 300px;
+          
+        }
   </style>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"
@@ -137,7 +143,25 @@
                                            
                                           </div>
                     
-                      <div class="mb-3" style=" margin-top: 12px;">
+
+
+                      <div class="mb-3" style=" margin-top: 12px;margin-bottom: 15px">
+
+                      
+                          <label for="exampleFormControltags" class="form-label">Upload Client Logo </label>
+                      
+                              <div class="form-group">
+                                  <label for="imageUpload">Choose an image</label>
+                                  <input type="file" name="client_logo" class="form-control-file" id="imageUpload" accept="image/*">
+                              </div>
+                              <div class="form-group">
+                                  <img id="imagePreview" class="image-preview img-thumbnail" src="#" alt="Image Preview" style="display: none;">
+                              </div>
+                         
+                
+                      </div>
+                      
+                      <div class="mb-3" style=" margin-top: 12px;margin-bottom: 15px">
                         <label for="exampleFormControltags" class="form-label">Project tags English </label>
                         <div class="input-group input-group-merge">
                           <input
@@ -272,4 +296,24 @@
         }
     });
   </script>
+
+<script>
+  $(document).ready(function() {
+      // Image preview
+      $("#imageUpload").change(function() {
+          readURL(this);
+      });
+
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                  $('#imagePreview').attr('src', e.target.result);
+                  $('#imagePreview').show();
+              }
+              reader.readAsDataURL(input.files[0]); // Convert image file to base64 string
+          }
+      }
+  });
+</script>
 @endsection

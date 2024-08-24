@@ -25,4 +25,8 @@ class Project extends Model
     public function getTagAttribute(){
         return $this->{'tag_'.App::getLocale()};
     }
+
+    public function clientLogo(){
+        return $this->morphOne(Media::class , 'mediable');
+    }
 }
