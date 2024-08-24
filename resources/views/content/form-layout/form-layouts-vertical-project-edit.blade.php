@@ -40,6 +40,28 @@
             max-height: 300px;
           
         }
+
+        .new-feature {
+    color: red; /* Red color for the "New" label */
+    font-weight: bold;
+    background-color: #fff3f3; /* Light background to highlight */
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+    display: inline-block;
+    animation: wave 1.5s infinite;
+    white-space: nowrap; /* Prevents wrapping */
+}
+
+/* Animation keyframes */
+@keyframes wave {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px); /* Adjust distance of the wave */
+    }
+}
   </style>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"
@@ -148,7 +170,9 @@
                       <div class="mb-3" style=" margin-top: 12px;margin-bottom: 15px">
 
                       
-                          <label for="exampleFormControltags" class="form-label">Upload Client Logo </label>
+                          <label for="exampleFormControltags" class="form-label">Upload Client Logo 
+                            <span class="new-feature">* New</span>
+                          </label>
                       
                               <div class="form-group">
                                   <label for="imageUpload">Choose an image</label>
