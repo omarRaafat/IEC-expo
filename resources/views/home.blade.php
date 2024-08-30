@@ -54,6 +54,8 @@
             <source src="{{url('uploads/IEC_Presentation.mp4')}}" type="video/mp4">
             Your browser does not support HTML5 video.
           </video> 
+
+          
           {{-- </div> --}}
   
 
@@ -185,7 +187,7 @@
 }
 
 .logos-slide img {
-    width: 120px;
+    width: fit-content;
     height: 120px;
     margin: 0 40px;
 }
@@ -212,48 +214,12 @@
 
         <div class="logo-slider " style="direction: ltr" data-v-4ef8651c="">
           <div class="logos-slide" data-v-4ef8651c="">
-              <img src="{{asset('assets/assets/img/clients/22.png')}}">
-              <img src="{{asset('assets/assets/img/clients/01.png')}}">
-              <img src="{{asset('assets/assets/img/clients/02.png')}}">
-              <img src="{{asset('assets/assets/img/clients/03.png')}}">
+          
+            @for ($i = 1; $i<=25; $i++ )
 
-              <img src="{{asset('assets/assets/img/clients/04.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/05.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/06.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/07.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/08.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/09.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/10.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/11.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/12.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/13.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/14.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/15.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/16.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/17.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/18.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/19.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/20.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/21.png')}}">
-            
-              <img src="{{asset('assets/assets/img/clients/23.png')}}">
+            <img src="{{ asset("assets/assets/img/clients/c{$i}.jpeg") }}">
+
+            @endfor
 
           </div>
         </div>
