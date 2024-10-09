@@ -33,7 +33,7 @@
       </div>
 
 
-     <div class="col-md-4">
+     <div class="col-md-1">
         <div class="form-group row">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Filter</button>
@@ -41,9 +41,19 @@
         </div>
       </div>
 
+
+      <div class="col-md-2">
+        <a href="{{ route('promoter.export', ['action' => 'export' , 'gender' => request()->get('gender'),'nationality' => request()->get('nationality')]) }}" class="btn btn-success">EXPORT</a>
+
+  
+      </div>
     </div>  
 
+   
+
 </form>
+
+
    </div>
    <hr>
 <!-- Basic Bootstrap Table -->

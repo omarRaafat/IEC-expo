@@ -27,6 +27,6 @@ class Project extends Model
     }
 
     public function clientLogo(){
-        return $this->morphOne(Media::class , 'mediable');
+        return $this->morphOne(Media::class , 'mediable')->latest();
     }
 }

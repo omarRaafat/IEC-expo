@@ -25,6 +25,17 @@ form {
    color:green;
    cursor: pointer;
 }
+
+#g-recaptcha-response {
+  display: block !important;
+  position: absolute;
+  margin: -78px 0 0 0 !important;
+  width: 302px !important;
+  height: 76px !important;
+  z-index: -999999;
+  opacity: 0;
+ 
+}
   </style>
 
 
@@ -203,11 +214,12 @@ form {
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <!--<script src="https://www.google.com/recaptcha/api.js" -->
-              <!--              async defer></script>-->
-                    <!--<div class="g-recaptcha" id="feedback-recaptcha" -->
-                    <!--     data-sitekey="6LdoBDEgAAAAAGJHjQuA1YjYriPdiu-obtg-vfWT">-->
-                    <!--</div>-->
+              <script src="https://www.google.com/recaptcha/api.js" 
+              async defer></script>
+              <div class="g-recaptcha" id="feedback-recaptcha" style=" margin-bottom: 18px;"
+              data-sitekey="6LdoBDEgAAAAAGJHjQuA1YjYriPdiu-obtg-vfWT" require>
+         </div><br>
+
               <div class="text-center "><button class="btn btn-block" style="width: 100%;" type="submit">{{__('site.send')}}</button></div>
             </form>
           </div>
@@ -218,8 +230,9 @@ form {
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+ 
 <script src="{{asset('assets/js/ui-toasts.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
 
 setTimeout(function(){
@@ -386,6 +399,14 @@ $(document).ready(function() {
     }); 
   }
       </script>
+      <script>
+window.addEventListener('load', () => {
+  const $recaptcha = document.querySelector('#g-recaptcha-response');
+  if ($recaptcha) {
+    $recaptcha.setAttribute('required', 'required');
+  }
+})
+        </script>
    
 @endsection
 

@@ -199,11 +199,12 @@ Route::post('/about/settings', $controller_path . '\dashboard\Crm@AboutSettings'
 Route::get('/subscriptions/all' , $controller_path. '\dashboard\Crm@SubscriptionsIndex')->name('subscriptions.all');
 
 Route::get('/promoter/registration/{promoter}', $controller_path . '\dashboard\Crm@showPromoter')->name('promoter.register');
-Route::get('/promoters/registrations/all', $controller_path . '\dashboard\Crm@showPromoters')->name('promoter.register');
+Route::get('/promoters/registrations/all', $controller_path . '\dashboard\Crm@showPromoters')->name('promoters');
 Route::get('/promoters/app/registrations/all', $controller_path . '\dashboard\Crm@showAppPromoters')->name('promoter2.register');
 Route::get('/promoter/app/registration/activate/{promoter}', $controller_path . '\dashboard\Crm@promoterActivate')->name('promoter.activate');
 
 Route::post('/promoters/registrations/filter', $controller_path . '\dashboard\Crm@filterPromoters')->name('promoter.filter');
+Route::get('/promoters/registrations/export', $controller_path . '\dashboard\Crm@filterPromoters')->name('promoter.export');
 
 
 });

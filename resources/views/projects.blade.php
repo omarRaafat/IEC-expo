@@ -14,7 +14,7 @@
             height: 280px;
             transition: .5s ease;
             backface-visibility: hidden;
-            object-fit: cover;
+            object-fit: fill;
         }
 
         .middle {
@@ -113,9 +113,15 @@
      border-color: #057a02;"
 }
 
+.custom_button:hover::before {
+            top: 0;
+            left: 0;
+        }
+
 .custom_button:hover{
     background: #057a02;
      border-color: #057a02;"
+     transform: scale(1.1);
 }
 
     </style>

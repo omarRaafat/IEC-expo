@@ -33,6 +33,9 @@ use App\Http\Controllers\Controller;
 use App\Models\PromotersRegistrations;
 use App\Models\EventRegistrationSponExhi;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Promoters;
+
 
 class Crm extends Controller
 {
@@ -211,8 +214,9 @@ class Crm extends Controller
           'media_type' => $extension,
         ]);
   
-        
+       
         $project->clientLogo()->save($media);
+        
       }else{
         return FALSE;
       }
@@ -872,9 +876,10 @@ class Crm extends Controller
     }
 
     public function showPromoters(){
-      $promoters_registrations =  PromotersRegistrations::latest()->get();
-      // return $promoters_registrations;
-         return view ('content.tables.tables-basic-promoters')->with('promoters' ,$promoters_registrations );
+      
+      $promoters =  PromotersRegistrations::latest()->get();
+  
+         return view ('content.tables.tables-basic-promoters')->with('promoters' ,$promoters );
     }
 
     public function showAppPromoters(){
@@ -979,13 +984,20 @@ class Crm extends Controller
     public function filterPromoters(Request $request){
       // return $request;
       // return PromotersRegistrations::where('gender' , $request->gender)->get();  
+      $nationality_filter_en = "Saudi Arabia";
+      $nationality_filter_ar = "المملكة العربية السعودية";
       if($request->has('gender') && $request->has('nationality')){
-        return view ('content.tables.tables-basic-promoters')->with('promoters' ,PromotersRegistrations::where(['gender' => $request->gender , 'nationality' => $request->nationality])->get());  
+        if($request->nationality == "Saudi"){
+          $promoters = PromotersRegistrations::where('gender' ,$request->gender)->whereIn('nationality' , [$nationality_filter_en,$nationality_filter_ar])->get();
+      
+        }else{
+          $promoters = PromotersRegistrations::where('gender' ,$request->gender)->whereNotIn('nationality' , [$nationality_filter_en,$nationality_filter_ar])->get();
+       
+        } 
       } 
 
       elseif($request->has('nationality')){
-        $nationality_filter_en = "Saudi Arabia";
-        $nationality_filter_ar = "المملكة العربية السعودية";
+      
         if($request->nationality == "Saudi"){
          $promoters = PromotersRegistrations::whereIn('nationality', [$nationality_filter_en,$nationality_filter_ar])->get();
         } 
@@ -994,14 +1006,27 @@ class Crm extends Controller
         }
         
 
-        return view ('content.tables.tables-basic-promoters')->with('promoters' ,$promoters );  
+      
 
 
-      }elseif($request->has('gender'))
-      return view ('content.tables.tables-basic-promoters')->with('promoters' , PromotersRegistrations::where('gender' , $request->gender)->get());  
-      else 
+      }elseif($request->has('gender')){
+        $promoters =  PromotersRegistrations::where('gender' , $request->gender)->get();
+       
+      }
+      else {
+        $promoters =  PromotersRegistrations::latest()->get();
+  
+       
+      }
 
-         return $this->showPromoters();
+      // request comes from export action
+      if(request()->has('action') && request()->input('action') == "export")
+      return Excel::download(new Promoters($promoters), 'promoters_export.xlsx', \Maatwebsite\Excel\Excel::XLSX, [
+        'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8',
+    ]);
+  
+      // request comes from filter action
+      return view ('content.tables.tables-basic-promoters')->with('promoters' ,$promoters );
 
  
     } 

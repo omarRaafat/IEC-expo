@@ -59,6 +59,7 @@ class ClientController extends Controller
 
     public function projectDetails($project_id){
         $project = Project::find($project_id);
+        // return $project->images;
         $project->tags = explode(',' , $project->tags);
         return view('project-details')->with(['settings' => Setting::first() ,'project' => $project]);
     }
