@@ -99,28 +99,28 @@ img{
     }
 
 
-  .cta2 .cta2-btn{
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 10px 25px;
-    border-radius: 2px;
-    transition: 0.4s;
-    margin: 10px;
-    border-radius: 4px;
-    border: 2px solid gray;
-    color: #fff;
-    background: #057a02;
+    .cta2-btn {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px; /* Add margin to the right */
+}
 
-  }
+.cta2-btn:last-child {
+    margin-right: 0; /* Remove margin for the last button */
+    color: white
+}
 
-  .cta2-btn:hover{
-    background: #fff;
-    color: #057a02;
-    border: 2px solid #057a02;
-  }
+.cta2-btn-container {
+    background: none; /* Ensure the background remains transparent */
+}
+
+.cta2-btn:last-child:hover{
+  color: white
+}
+
 
 
 
@@ -211,10 +211,19 @@ snaptr('track', 'PAGE_VIEW');
       <nav id="navbar" class="navbar">
         <ul>
           <li>
-          <div class="cta2  cta2-btn-container text-center" style="background:none">
-          <!-- {{route('event.registration' ,'IEC')}} -->
-            <a class="cta2-btn align-middle" href="{{route('promoter.register')}}" >    {{__('site.promoter_register')}}</a>
-          </div> 
+            <div class=" cta2-btn-container text-center" style="margin: 10px" >
+              <a class="cta2-btn align-middle" style="padding: 10px"    href="{{ route('promoter.register') }}">
+                  {{ __('site.promoter_register') }}
+              </a>
+            
+          </div>
+          </li>
+          <li>
+            <div class=" cta2-btn-container text-center" style="margin: 10px">
+            <a class="  cta2-btn align-middle" style="padding: 10px" href="{{ route('jobs.apply') }}">
+              {{ __('site.apply_for_job') }}
+          </a>
+            </div>
           </li>
           <li><a class="active" href="/#">{{__('site.home')}}</a></li>
           <li><a href="#about-us">{{(__('site.about'))}}</a></li>

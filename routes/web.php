@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Mail\FireMailNotification;
 use App\Models\Setting;
+use App\Http\Controllers\JobController;
 // use Vatttan\Apdf\Apdf;
 // use PDF;
 // use Mail;
@@ -207,6 +208,7 @@ Route::post('/promoters/registrations/filter', $controller_path . '\dashboard\Cr
 Route::get('/promoters/registrations/export', $controller_path . '\dashboard\Crm@filterPromoters')->name('promoter.export');
 
 
+
 });
 
 
@@ -255,8 +257,12 @@ Route::get('/promoters/registration', $controller_path . '\PromoterController@re
 Route::post('/promoters/registration', $controller_path . '\PromoterController@register')->name('promoter.register');
 Route::get('/promoters/registration/country/cities/{country_id}', $controller_path . '\PromoterController@cities_from_country_id')->name('promoter.country_cities');
 
+Route::post('applicant/jobs/registration' , [JobController::class , 'store'])->name('jobs.store');
+Route::get('applicant/jobs/registration' , [JobController::class , 'index'])->name('jobs.apply');
+
 require_once('./vendor/autoload.php');
 use Postmark\PostmarkClient;
+
 Route::get('/test' , function(){
     
 

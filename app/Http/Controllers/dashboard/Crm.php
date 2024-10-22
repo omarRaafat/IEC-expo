@@ -22,7 +22,9 @@ use App\Models\Sponsor;
 use App\Models\EventForm;
 use App\Models\Exhibitor;
 use App\Models\OppAssign;
+use App\Exports\Promoters;
 use App\Models\LeadAssign;
+use Illuminate\Support\Str;
 use App\Models\Notification;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
@@ -30,11 +32,10 @@ use App\Models\EventRegistration;
 use App\Mail\FireMailNotification;
 use App\Http\Traits\EmailFireTrait;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\PromotersRegistrations;
 use App\Models\EventRegistrationSponExhi;
 use Illuminate\Support\Facades\Validator;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\Promoters;
 
 
 class Crm extends Controller
@@ -1020,10 +1021,13 @@ class Crm extends Controller
       }
 
       // request comes from export action
-      if(request()->has('action') && request()->input('action') == "export")
-      return Excel::download(new Promoters($promoters), 'promoters_export.xlsx', \Maatwebsite\Excel\Excel::XLSX, [
-        'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8',
+      if(request()->has('action') && request()->input('action') == "export"){
+      $fileName = date('d-m-Y') . '-' . Str::random(5) . '-promoters_export.xlsx';
+
+      return Excel::download(new Promoters($promoters), $fileName, \Maatwebsite\Excel\Excel::XLSX, [
+        'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // Correct content type for Excel
     ]);
+    }
   
       // request comes from filter action
       return view ('content.tables.tables-basic-promoters')->with('promoters' ,$promoters );
