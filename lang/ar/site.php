@@ -120,7 +120,6 @@ return [
   'birthdate' => 'تاريخ الميلاد',
   'qualification' => 'المؤهل',
   'experience' => 'الخبرة',
-  'language_level' => 'مستوى اللغة',
   'excellent' => 'ممتاز',
   'very_good' => 'جيد جداً',
   'good' => 'جيد',
@@ -158,7 +157,7 @@ return [
   'old_experiences' => 'الخبرات السابقة',
   'remove' => "حذف",
   'add_other' => 'أضافة أخرى',
-  'apply_for_job' => 'تقدم لوظيفة',
+  'apply_for_job' => 'انظم إلى فريق عمل BU',
   'select' => 'أختر'
 
 

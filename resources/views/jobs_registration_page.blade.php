@@ -207,9 +207,7 @@
                                         <option value="advanced"
                                             {{ old('english_proficiency') == 'advanced' ? 'selected' : '' }}>
                                             {{ __('site.english_proficiency_3') }}</option>
-                                            <option value="fluent"
-                                            {{ old('english_proficiency') == 'fluent' ? 'selected' : '' }}>
-                                            {{ __('site.english_proficiency_4') }}</option>
+                                          
                                     </select>
                                 </div>
 
@@ -231,6 +229,7 @@
                                         @if (old('company_name'))
                                             @foreach (old('company_name') as $index => $companyName)
                                                 <div class="experience-item mb-3">
+                                                    
                                                     <input type="text" class="form-control" name="company_name[]"
                                                         value="{{ $companyName }}"
                                                         placeholder="{{ __('site.company_name') }}" required
@@ -247,6 +246,9 @@
                                                     @enderror
                                                     <div class="row mt-2">
                                                         <div class="col-md-6">
+                                                            <label class="custom-control-label"
+                                                            for="customRadioInline2">{{ __('site.from_date') }} <span
+                                                                class="text-danger">*</span></label>
                                                             <input type="date" class="form-control" name="from_date[]"
                                                                 value="{{ old('from_date')[$index] ?? '' }}" required
                                                                 style="border-color: black;"
@@ -256,6 +258,9 @@
                                                             @enderror
                                                         </div>
                                                         <div class="col-md-6">
+                                                            <label class="custom-control-label"
+                                                            for="customRadioInline2">{{ __('site.to_date') }} <span
+                                                                class="text-danger">*</span></label>
                                                             <input type="date" class="form-control" name="to_date[]"
                                                                 value="{{ old('to_date')[$index] ?? '' }}" required
                                                                 style="border-color: black;"
@@ -285,11 +290,17 @@
 
                                                 <div class="row mt-2">
                                                     <div class="col-md-6">
+                                                        <label class="custom-control-label"
+                                                        for="customRadioInline2">{{ __('site.from_date') }} <span
+                                                            class="text-danger">*</span></label>
                                                         <input type="date" class="form-control" name="from_date[]"
                                                             required style="border-color: black;"
                                                             placeholder="{{ __('site.from_date') }}">
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label class="custom-control-label"
+                                                        for="customRadioInline2">{{ __('site.to_date') }} <span
+                                                            class="text-danger">*</span></label>
                                                         <input type="date" class="form-control" name="to_date[]"
                                                             required style="border-color: black;"
                                                             placeholder="{{ __('site.to_date') }}">
@@ -377,14 +388,20 @@
             const experienceRepeater = document.getElementById('experienceRepeater');
             const newExperienceItem = document.createElement('div');
             newExperienceItem.classList.add('experience-item', 'mb-3');
-            newExperienceItem.innerHTML = `
+            newExperienceItem.innerHTML = `<hr>
             <input type="text" class="form-control" name="company_name[]" placeholder="{{ __('site.company_name') }}" required style="border-color: black;">
             <input type="text" class="form-control mt-2" name="position[]" placeholder="{{ __('site.position') }}" required style="border-color: black;">
            <div class="row mt-2">
                 <div class="col-md-6">
+                     <label class="custom-control-label"
+                                                            for="customRadioInline2">{{ __('site.from_date') }} <span
+                                                                class="text-danger">*</span></label>
                     <input type="date" class="form-control" name="from_date[]" required style="border-color: black;" placeholder="{{ __('site.from_date') }}">
                 </div>
                 <div class="col-md-6">
+                     <label class="custom-control-label"
+                                                            for="customRadioInline2">{{ __('site.to_date') }} <span
+                                                                class="text-danger">*</span></label>
                     <input type="date" class="form-control" name="to_date[]" required style="border-color: black;" placeholder="{{ __('site.to_date') }}">
                 </div>
             </div>
